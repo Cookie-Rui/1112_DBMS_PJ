@@ -1,0 +1,22 @@
+header{
+    background-color: rgb(75, 78, 78);
+    width: 100vw;
+    display: flex;
+    flex-flow: row nowrap;
+    
+    .Tabs{
+        border: 1px solid black;
+        width: 150px;
+        margin: 0px 10px;    
+    }
+}
+/* a標籤 */
+.Tab{
+    display: block;
+    text-align: center; 
+    background-color: rgb(179, 167, 167);
+    color: white; 
+    padding: 15px 0;
+    font-weight: bold;
+    text-decoration: none;
+}

@@ -1,0 +1,8 @@
+form{
+    border: solid 1px black;
+    width: 50%;
+    margin: 0 auto;
+    background-color: aqua;
+    text-align: center;
+    font-size: larger;
+}

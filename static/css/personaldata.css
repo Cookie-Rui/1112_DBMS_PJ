@@ -1,0 +1,26 @@
+form{
+    border: solid 1px black;
+    width: 50%;
+    margin: 0px auto;
+    background-color: aqua;
+    text-align: center;
+    font-size: larger;
+}
+table{
+    width: 50%;
+    text-align: center;
+    margin: 0px auto;
+    .table-head{
+        background-color: rgb(189, 179, 179);
+    }
+    .delete-btn{
+        background-color: red;
+    }
+}
+table button{
+    width: 100%;
+    border: 0px;
+}
+table,td{
+    border: 1px solid black;
+}
