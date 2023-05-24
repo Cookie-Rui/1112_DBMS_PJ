@@ -3,11 +3,13 @@
 ### Flask Block
 
 請在一開始輸入↓，除非不需要簡單模板ˊ ˇ ˋ
+
 {% extends "base.html" %}
 
 - style
 你需要的Style通過這個Block放進來，CSS放入static中的css料夾中，例：
-<link href="{{url_for('static', filename='css/courseSelect.css')}}" rel="stylesheet">
+
+```<link href="{{url_for('static', filename='css/courseSelect.css')}}" rel="stylesheet">```
 
 - title
 你希望這一頁叫做甚麼名字請放入這個Block
