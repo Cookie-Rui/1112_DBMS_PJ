@@ -9,7 +9,7 @@ MinorBlock.style.display = "none"
 // 可以拓展出額外的輸入空間
 MinorButton.addEventListener('change', (event)=>{
     if(event.target.checked){
-        MinorBlock.style.display = "block"
+        MinorBlock.style.display = "flex"
     }else{
         MinorBlock.style.display = "none"
     }
