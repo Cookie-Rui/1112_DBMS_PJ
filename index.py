@@ -3,6 +3,18 @@ from flask import url_for, redirect, render_template , request, flash
 import configparser
 import os
 
+# 假資料
+allData = [{'department':'資科系', 'course':'資料庫', 'number':10, 'isHit': True} ,
+            {'department':'經濟系', 'course':'線性代數', 'number':20, 'isHit': True} , 
+            {'department':'財政系', 'course':'財政', 'number':30, 'isHit': False} , 
+            {'department':'中文系', 'course':'職場英文', 'number':40, 'isHit': True} , 
+            {'department':'歷史系', 'course':'人文歷史', 'number':50, 'isHit': False}]
+
+def Delete():
+    global allData
+    allData.pop()
+    print("delete")
+
 # Base
 # 讀取Config檔案
 config = configparser.ConfigParser()
@@ -11,13 +23,6 @@ config.read('Config/config.ini')
 app = Flask(__name__)
 app.config["JSON_AS_ASCII"] = False
 
-# 假資料
-allData = [{'department':'資科系', 'course':'資料庫', 'number':10, 'isHit': True} ,
-            {'department':'經濟系', 'course':'線性代數', 'number':20, 'isHit': True} , 
-            {'department':'財政系', 'course':'財政', 'number':30, 'isHit': False} , 
-            {'department':'中文系', 'course':'職場英文', 'number':40, 'isHit': True} , 
-            {'department':'歷史系', 'course':'人文歷史', 'number':50, 'isHit': False}]
-
 # region Route
 # 一進去 導向其他頁面
 @app.route("/")
@@ -25,12 +30,12 @@ def Init():
     return redirect(url_for('PersonPost'))
 
 # 新增資料的頁面
-@app.route('/person', methods=['GET', 'POST'])
+@app.route('/DataSubmission', methods=['GET', 'POST'])
 def PersonPost():
     # 能夠提交自己選課結果, 需求 名字(不一定)科系, 課程,以及遞補序號
     # GET : 呼叫能提交資訊的頁面
     # TODO : 當'POST'時,驗證並通過MYSQL的東西提交資料 然後返回當前頁面
-    return render_template('CourseSelect.html')
+    return render_template('DataSubmission.html')
 
 # 希望獲得課程是否能上的資訊
 @app.route('/CourseSelectRecommendation', methods=['GET', 'POST'])
@@ -71,7 +76,13 @@ def Updatedata():
         # 然後這裡根據雙Id 查資料
         # 資料不多應該很快
         the_allData = {'course': '課程喔', 'number': 100, 'isHit' : True}
-        return render_template('updateData.html', FormData=the_allData)
+        return render_template('DataUpdate.html', FormData=the_allData)
+
+@app.route('/delete',methods=['GET', 'POST'])
+def TestDelete():
+    Delete()
+
+
 # endregion
 
 if __name__ == '__main__':

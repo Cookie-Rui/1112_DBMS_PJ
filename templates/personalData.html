@@ -40,7 +40,7 @@
             </td>
             <td>
                 <!-- 不知道怎麼在這裡接 反正接刪除ˊ ˇ ˋ  -->
-                <button type="button" class="delete-btn">
+                <button type="button" class="delete-btn" id="deleteButton">
                     刪除按鈕
                 </button>
             </td>
@@ -50,4 +50,15 @@
     {% endif %}
     {% endwith%}
 </div>
+<script>
+document.getElementById("deleteButton").addEventListener("click", function() {
+    fetch('/delete', {
+        method: 'POST'
+    })
+    .then(function(response) {
+        // 处理删除成功的情况
+        location.reload();
+    })
+});
+</script>
 {% endblock content%}
