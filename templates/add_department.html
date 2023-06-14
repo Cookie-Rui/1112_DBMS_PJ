@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Department</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Add Department</h1>
+    <form method="POST" action="{{ url_for('add_department') }}">
+        <div class="form-group">
+            <label for="department_name">Department Name:</label>
+            <input type="text" id="department_name" name="department_name" required>
+        </div>
+        <button type="submit">Add Department</button>
+    </form>
+</body>
+</html>
