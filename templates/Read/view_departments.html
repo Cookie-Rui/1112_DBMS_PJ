@@ -1,0 +1,47 @@
+{% extends "Read/ReadLayout.html" %}
+{% block style %}
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th, td {
+        padding: 8px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    tr:hover {
+        background-color: #f5f5f5;
+    }
+    h1{
+        margin: 10px;
+        display: inline-block;
+    }
+</style>
+{% endblock style%}
+{% block title %}Courses{% endblock title%}
+{% block content%}
+<h1>View Departments</h1> 
+<a href="{{url_for('CreateDepartment')}}">新增</a>
+<table>
+    <tr>
+        <th>Department ID</th>
+        <th>Department Name</th>
+        <th>Actions</th>
+    </tr>
+    {% for department in departments %}
+    <tr>
+        <td>{{ department[0] }}</td>
+        <td>{{ department[1] }}</td>
+        <td>
+            <form action="/delete_department" method="POST" style="display: inline;">
+                <input type="hidden" name="department_id" value="{{ department[0] }}">
+                <button type="submit">Delete</button>
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock content%}

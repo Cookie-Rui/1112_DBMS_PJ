@@ -15,8 +15,15 @@ header{
     display: block;
     text-align: center; 
     background-color: rgb(179, 167, 167);
-    color: white; 
+    color: black; 
     padding: 15px 0;
     font-weight: bold;
     text-decoration: none;
+}
+.Tab:hover{
+    background-color: rgb(60, 60, 60);
+    color: white;
+}
+h1{
+    text-align: center;
 }
