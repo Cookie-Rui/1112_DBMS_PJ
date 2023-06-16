@@ -1,0 +1,49 @@
+{% extends "Create/CreateLayout.html" %}
+
+{% block style %}{% endblock style%}
+
+{% block title %}Add Student{% endblock title%}
+
+{% block content%}
+<h1>
+    新增學生
+</h1>
+<form action="{{ url_for('CreateStudent') }}" method="POST">
+    <p>
+        <label for="student_name">Name:</label>
+        <input type="text" id="student_name" name="student_name" required>
+    </p>
+
+    <p>
+        <label for="student_id">Student ID:</label>
+        <input type="text" id="student_id" name="student_id" required>
+    </p>
+
+    <p>
+        <label for="gender">Gender:</label>
+        <input type="text" id="gender" name="gender" required>
+    </p>
+
+    <p>
+        <label for="grade">Grade:</label>
+        <input type="text" id="grade" name="grade" required>
+    </p>
+
+    <p>
+        <label for="major_Did">Major Department ID:</label>
+        <input type="text" id="major_Did" name="major_Did" required>
+    </p>
+
+    <p>
+        <label for="haveSecondary">Have Secondary:</label>
+        <select id="haveSecondary" name="haveSecondary" required>
+            <option value="0">No</option>
+            <option value="1">Yes</option>
+        </select>
+    </p>
+
+    <p>
+        <button type="submit">新增學生</button>
+    </p>
+</form>
+{% endblock content%}

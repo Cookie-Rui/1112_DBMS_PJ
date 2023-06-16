@@ -1,0 +1,18 @@
+{% extends "Create/CreateLayout.html" %}
+
+{% block style %}{% endblock style%}
+
+{% block title %}Add Department{% endblock title%}
+
+{% block content%}
+<h1>Add Department</h1>
+<form method="POST" action="{{ url_for('CreateDepartment') }}">
+    <p class="form-group">
+        <label for="department_name">Department Name:</label>
+        <input type="text" id="department_name" name="department_name" required>
+    </p>
+    <p>
+        <button type="submit">Add Department</button>
+    </p>
+</form>
+{% endblock content%}

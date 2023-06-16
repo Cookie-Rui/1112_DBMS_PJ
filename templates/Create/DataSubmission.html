@@ -1,0 +1,29 @@
+{% extends "Create/CreateLayout.html" %}
+
+{% block style %}
+<link href="{{url_for('static', filename='css/Create/courseSelect.css')}}" rel="stylesheet">
+{% endblock style%}
+{% block title %}Login{% endblock title%}
+
+{% block content%}
+<form method='post' action={{ url_for('CreateSelectCourse') }}>
+    <p>
+        <label for="Person">學號：</label>
+        <input type='text' id="Person" name='Person' placeholder="請輸入你的名字/學號">
+    </p>
+    <p>
+        <!-- 或是可能要用 Select -->
+        <label for="Course">課程：</label>
+        <input type="text" id="Course" name="Course" placeholder="請輸入你選的課程">
+    </p>
+    <p>
+        <label for="number">遞補序號：</label>
+        <input type="number" id="number" name="number" placeholder="請輸入遞補序號">
+    </p>
+    <p>
+        <button type='submit'>提交</button>
+    </p>
+</form>
+
+<script src="{{url_for('static', filename='js/CourseSelect.js')}}"></script>
+{% endblock content%}

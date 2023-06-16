@@ -1,0 +1,48 @@
+form{
+    display: flex;
+    flex-flow: column nowrap;
+
+    border: solid 1px rgb(210, 210, 210);
+    border-radius: 10px;
+    width: 50%;
+    margin: 0 auto;
+
+    text-align: center;
+    font-size: larger;
+}
+form > p {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: start;
+
+    text-align: left;
+}
+form > p > label{
+    margin-left: 30px;
+    width: 200px;
+    font-family: sans-serif, monospace;
+    font-size: large;
+}
+form > p > input[type="text"],
+form > p > input[type="number"]
+{
+    margin: 0px 20px ;
+    width : calc(100% - 270px);
+
+    border: 1px solid black;
+    border-radius: 4px;
+}
+form > p > input[type="checkbox"]{
+    margin: 0px 20px ;
+    width: 20px;
+}
+form > p > button{
+    width: 200px;
+    height: 30px;
+    
+    font-weight: bold;
+    font-size: large;
+    border:1px solid black;
+    border-radius: 5px;
+    margin: 0px auto;
+}

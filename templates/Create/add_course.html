@@ -1,0 +1,55 @@
+{% extends "Create/CreateLayout.html" %}
+
+{% block style %}{% endblock style%}
+
+{% block title %}Login{% endblock title%}
+
+{% block content%}
+<h1>Add Course</h1>
+<form method="POST" action="{{ url_for('CreateCourse') }}">
+    <p>
+        <label for="course_name">Course Name:</label>
+        <input type="text" id="course_name" name="course_name" required><br>
+    </p>
+    <p>
+        <label for="course_id">Course ID:</label>
+        <input type="text" id="course_id" name="course_id" required><br>
+    </p>
+    <p>
+        <label for="max_people">Maximum Number of People:</label>
+        <input type="number" id="max_people" name="max_people" required><br>
+    </p>
+            
+    <p>
+        <label for="choose_amount">Choose Amount:</label>
+        <input type="number" id="choose_amount" name="choose_amount" required><br>
+    </p>
+    <p>
+        <label for="teacher_id">Teacher ID:</label>
+        <input type="text" id="teacher_id" name="teacher_id" required><br>
+    </p>
+    <p>
+        <label for="building_id">Building ID:</label>
+        <input type="text" id="building_id" name="building_id" required><br>
+    </p>
+    <p>
+        <label for="c_time">Course Time:</label>
+        <input type="text" id="c_time" name="c_time" required><br>
+    </p>
+    <p>
+        <label for="department_id">Department ID:</label>
+        <input type="text" id="department_id" name="department_id" required><br>
+    </p>
+    <p>
+        <label for="credit">學分:</label>
+        <input type="number" id="credit" name="credit" required><br>
+    </p>
+    <p>
+        <label for="c_type">選課類別:</label>
+        <input type="text" id="c_type" name="c_type" required><br>
+    </p>
+    <p>
+        <button type="submit">新增</button>
+    </p>
+</form>
+{% endblock content%}

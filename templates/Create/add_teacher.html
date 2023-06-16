@@ -1,0 +1,23 @@
+{% extends "Create/CreateLayout.html" %}
+
+{% block style %}{% endblock style%}
+
+{% block title %}Login{% endblock title%}
+
+{% block content%}
+<h1>Add Teacher</h1>
+<form method="POST" action="{{ url_for('CreateTeacher') }}">
+    <p class="form-group">
+        <label for="teacher_name">Teacher Name:</label>
+        <input type="text" id="teacher_name" name="teacher_name" required>
+    </p>
+    <p class="form-group">
+        <label for="department">Department:</label>
+        <input type="text" id="department" name="department" required>
+    </p>
+    <p>
+        <button type="submit">Add Teacher</button>
+    </p>
+   
+</form>
+{% endblock content%}
