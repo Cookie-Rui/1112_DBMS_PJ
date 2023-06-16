@@ -46,8 +46,20 @@ def calcProbability(course_id):
     else:
         return max_people/choose_amount
 
+def deleteStudent(student_id):
+    try:
+        command = "DELETE FROM selectcourse WHERE student_id=%s"
+        cursor.execute(command, student_id)
+        command = "DELETE FROM student WHERE s_id=%s"
+        cursor.execute(command, student_id)
+        conn.commit()
+    except pymysql.Error as e:
+        print(f"An error occurred: {e}")
+
 if __name__ == "__main__":
     #updateRank(110104008, 703003001, 3)
     # deleteSelection(110104008,703003001)
-    #print(returnSelection(110104008))
-    print(calcProbability('703016001'))
+
+    #print(calcProbability('703016001'))
+    deleteStudent(110104008)
+    print(returnSelection(110104008))
