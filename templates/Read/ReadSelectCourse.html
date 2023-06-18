@@ -38,7 +38,7 @@
                 </a>
             </td>
             <td>
-                <a class="Tab" 
+                <a class="Tab"
                     href="{{url_for('TestDelete', student_id=message[0] , course_id=message[1])}}">刪除按鈕
                 </a>
             </td>
@@ -48,15 +48,4 @@
     {% endif %}
     {% endwith%}
 </div>
-<script>
-document.getElementById("deleteButton").addEventListener("click", function() {
-    fetch('/delete', {
-        method: 'POST'
-    })
-    .then(function(response) {
-        // 处理删除成功的情况
-        location.reload();
-    })
-});
-</script>
 {% endblock content%}

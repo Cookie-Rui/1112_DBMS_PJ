@@ -1,6 +1,5 @@
 from flask import Flask 
 from flask import url_for, redirect, render_template , request, flash
-from flaskext.mysql import MySQL
 import static.python.Create as create
 import static.python.YuPart as yupart
 import static.python.Read as read
@@ -117,6 +116,11 @@ def Updatedata():
 def TestDelete():
     yupart.deleteSelection(request.args['student_id'],request.args['course_id'])
     return redirect(url_for('PersonalData'))
+
+@app.route('/Delete/Student',methods=['GET'])
+def DeleteStudent():
+    yupart.deleteStudent(request.args['student_id'])
+    return redirect(url_for('ReadStudents'))
 # endregion
 
 

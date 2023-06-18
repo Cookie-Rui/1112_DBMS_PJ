@@ -33,6 +33,7 @@
         <th>Grade</th>
         <th>Major ID</th>
         <th>Have Secondary</th>
+        <th>Delete</th>
     </tr>
     {% for student in students %}
     <tr>
@@ -42,6 +43,11 @@
         <td>{{ student[3] }}</td>
         <td>{{ student[4] }}</td>
         <td>{{ "有" if student[5] == 1 else "沒有" }}</td>
+        <td>
+            <a class="Tab"
+                href="{{url_for('DeleteStudent', student_id=student[1]) }}">刪除按鈕
+            </a>
+        </td>
     </tr>
     {% endfor %}
 </table>
