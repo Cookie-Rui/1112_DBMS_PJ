@@ -5,7 +5,7 @@ db_settings = {
     "host": "127.0.0.1",
     "port": 3306,
     "user": "root",
-    "password": "0000",
+    "password": "zero7539510?",
     "db": "project",
     "charset": "utf8"
 }
@@ -37,4 +37,4 @@ def add_course(c_name, c_id, max_people, choose_amount, teacher_id, building_id,
 # add_student("John Doe", "S001", "Male", "Freshman", "D001", 0)
 # add_teacher("Jane Smith", 1001, "D002", "Female")
 # add_department("Computer Science", "D001")
-# add_course("Programming 101", "C001", 50, 0, 1001, "B001", "Monday 9:00 AM", "D001", 3, "Elective")
+# add_course("Programming 101", "C001", 50, 0, 1, "270", "D56", "101", 3, "Elective")

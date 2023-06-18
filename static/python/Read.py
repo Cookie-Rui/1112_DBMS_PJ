@@ -73,3 +73,10 @@ def course_print(course):
     result3=cursor.fetchone()
     new_course=(course[0],course[1],course[2],course[3],result[0],result2[0],course[6],result3[0],course[8],course[9])
     return(new_course)
+
+def student_list():
+    command = "SELECT * FROM student"
+    cursor.execute(command)
+    results=cursor.fetchall()
+    conn.commit()
+    return results

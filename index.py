@@ -3,17 +3,10 @@ from flask import url_for, redirect, render_template , request, flash
 from flaskext.mysql import MySQL
 import static.python.Create as create
 import static.python.YuPart as yupart
-from static.python.Read import same_rank, course_inquire, course_print, course_all
+import static.python.Read as read
 from static.python.Update import choose_amount_update
 import pymysql
 import os
-
-# 假資料
-allData = [{'department':'資科系', 'course':'資料庫', 'number':10, 'isHit': True} ,
-            {'department':'經濟系', 'course':'線性代數', 'number':20, 'isHit': True} , 
-            {'department':'財政系', 'course':'財政', 'number':30, 'isHit': False} , 
-            {'department':'中文系', 'course':'職場英文', 'number':40, 'isHit': True} , 
-            {'department':'歷史系', 'course':'人文歷史', 'number':50, 'isHit': False}]
 
 # config 
 app = Flask(__name__)
@@ -33,7 +26,7 @@ def Init():
 def CourseSelectRecommendation():
     # TODO : POST 根據輸入資料回傳有修這堂課的人
     if(request.method == 'POST'):
-        return render_template('recommendation.html', test=allData)
+        return render_template('recommendation.html', data=yupart.calcProbability(request.form["Course"]))
     return render_template('recommendation.html')
 
 # region 新增資料 Create
@@ -63,14 +56,19 @@ def CreateCourse():
             flash("Not Success")
             return render_template('Create/add_course.html')
         else:
-            return render_template('Read/view_courses.html', courses=course_all())
+            return render_template('Read/view_courses.html', courses=read.course_all())
     return render_template('Create/add_course.html')
 
 # 新增學生
 @app.route('/Create/Student', methods=['GET', 'POST'])
 def CreateStudent():
     if(request.method == "POST"):
-        return render_template(url_for('ReadStudents'))
+        success = create.add_student(request.form["student_name"], request.form["student_id"], request.form["gender"],
+                           request.form["grade"], request.form["major_Did"], request.form["haveSecondary"])
+        if(not success):
+            flash("沒有添加成功")
+            return render_template('Create/add_student.html')
+        return redirect(url_for('ReadStudents'))
     return render_template('Create/add_student.html')
 
 # endregion 
@@ -85,11 +83,11 @@ def PersonalData():
 
 @app.route('/Read/Course', methods=['GET', 'POST'])
 def ReadCourses():
-    return render_template('Read/view_courses.html', courses=course_all())
+    return render_template('Read/view_courses.html', courses=read.course_all())
 
 @app.route('/Read/Student', methods=['GET', 'POST'])
 def ReadStudents():
-    return render_template('Read/view_students.html')
+    return render_template('Read/view_students.html', students=read.student_list())
 
 @app.route('/Read/Teacher', methods=['GET', 'POST'])
 def ReadTeachers():

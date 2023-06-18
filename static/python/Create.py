@@ -37,20 +37,29 @@ def course_selection_insert(student_ID, course_ID,c_rank):
             return False
         
 def add_student(s_name, s_id, gender, grade, major_Did, haveSecondary):
-    command = "INSERT INTO Student (s_name, s_id, gender, grade, major_Did, haveSecondary) VALUES (%s, %s, %s, %s, %s, %s)"
-    cursor.execute(command, (s_name, s_id, gender, grade, major_Did, haveSecondary))
-    conn.commit()
-
+    try:
+        command = "INSERT INTO Student (s_name, s_id, gender, grade, major_Did, haveSecondary) VALUES (%s, %s, %s, %s, %s, %s)"
+        cursor.execute(command, (s_name, s_id, gender, grade, major_Did, haveSecondary))
+        conn.commit()
+        return True
+    except:
+        return False
 def add_teacher(t_name, t_id, t_department_id, gender):
-    command = "INSERT INTO Teacher (t_name, t_id, t_department_id, gender) VALUES (%s, %s, %s, %s)"
-    cursor.execute(command, (t_name, t_id, t_department_id, gender))
-    conn.commit()
-
+    try:
+        command = "INSERT INTO Teacher (t_name, t_id, t_department_id, gender) VALUES (%s, %s, %s, %s)"
+        cursor.execute(command, (t_name, t_id, t_department_id, gender))
+        conn.commit()
+        return True
+    except:
+        return False
 def add_department(d_name, d_id):
-    command = "INSERT INTO Department (d_name, d_id) VALUES (%s, %s)"
-    cursor.execute(command, (d_name, d_id))
-    conn.commit()
-
+    try:
+        command = "INSERT INTO Department (d_name, d_id) VALUES (%s, %s)"
+        cursor.execute(command, (d_name, d_id))
+        conn.commit()
+        return True
+    except:
+        return False
 def add_course(c_name, c_id, max_people, choose_amount, teacher_id, building_id, c_time, c_department_id, credit, c_type):
     command = "INSERT INTO Course (c_name, c_id, max_people, choose_amount, teacher_id, building_id, c_time, c_department_id, credit, c_type) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
     try:

@@ -24,7 +24,8 @@ form > p > label{
     font-size: large;
 }
 form > p > input[type="text"],
-form > p > input[type="number"]
+form > p > input[type="number"],
+form > p > select
 {
     margin: 0px 20px ;
     width : calc(100% - 270px);

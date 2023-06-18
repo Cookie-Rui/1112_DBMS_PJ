@@ -58,7 +58,7 @@ def calcProbability(course_id):
     else:
         return (max_people, choose_amount, max_people/choose_amount)
 
-if __name__ == "__main__":
-    updateRank(110104008, 703003001, 3)
-    # deleteSelection(110104008,703003001)
-    print(returnSelection(110104008))
+# if __name__ == "__main__":
+#     updateRank(110104008, 703003001, 3)
+#     deleteSelection(110104008,703003001)
+#     print(returnSelection(110104008))
