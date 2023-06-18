@@ -80,3 +80,10 @@ def student_list():
     results=cursor.fetchall()
     conn.commit()
     return results
+
+def teacher_list():
+    command = "SELECT * FROM teacher"
+    cursor.execute(command)
+    results=cursor.fetchall()
+    conn.commit()
+    return results

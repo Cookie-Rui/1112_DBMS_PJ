@@ -70,6 +70,28 @@ def CreateStudent():
         return redirect(url_for('ReadStudents'))
     return render_template('Create/add_student.html')
 
+# 新增教師
+@app.route('/Create/Teacher', methods=['GET', 'POST'])
+def CreateTeacher():
+    if(request.method == "POST"):
+        success = create.add_teacher(request.form["teacher_name"], request.form["department_id"], request.form["gender"])
+        if(not success):
+            flash("沒有添加成功")
+            return render_template('Create/add_teacher.html')
+        return redirect(url_for('ReadTeachers'))
+    return render_template('Create/add_teacher.html')
+
+# 新增系所
+# @app.route('/Create/Department', methods=['GET', 'POST'])
+# def CreateDepartment():
+#     if(request.method == "POST"):
+#         success = create.add_department(request.form["department_name"], request.form["department_id"])
+#         if(not success):
+#             flash("沒有添加成功")
+#             return render_template('Create/add_department.html')
+#         return redirect(url_for('ReadDepartments'))
+#     return render_template('Create/add_department.html')
+
 # endregion 
 
 # region  讀取資料 Read
@@ -90,11 +112,11 @@ def ReadStudents():
 
 @app.route('/Read/Teacher', methods=['GET', 'POST'])
 def ReadTeachers():
-    return render_template('Read/view_teachers.html')
+    return render_template('Read/view_teachers.html', teachers=read.teacher_list())
 
-@app.route('/Read/Department', methods=['GET', 'POST'])
-def ReadDepartments():
-    return render_template('Read/view_departments.html')
+# @app.route('/Read/Department', methods=['GET', 'POST'])
+# def ReadDepartments():
+#     return render_template('Read/view_departments.html')
 
 # endregion
 

@@ -31,7 +31,6 @@
         <th>Teacher Name</th>
         <th>Department</th>
         <th>Gender</th>
-        <th>Actions</th>
     </tr>
     {% for teacher in teachers %}
     <tr>
@@ -39,12 +38,6 @@
         <td>{{ teacher[1] }}</td>
         <td>{{ teacher[2] }}</td>
         <td>{{ teacher[3] }}</td>
-        <td>
-            <form action="/delete_teacher" method="POST" style="display: inline;">
-                <input type="hidden" name="teacher_id" value="{{ teacher[0] }}">
-                <button type="submit">Delete</button>
-            </form>
-        </td>
     </tr>
     {% endfor %}
 </table>

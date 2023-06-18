@@ -44,14 +44,19 @@ def add_student(s_name, s_id, gender, grade, major_Did, haveSecondary):
         return True
     except:
         return False
-def add_teacher(t_name, t_id, t_department_id, gender):
+def add_teacher(t_name, t_department_id, gender):
     try:
+        command = "SELECT MAX(t_id) FROM teacher"
+        cursor.execute(command)
+        results=cursor.fetchone()
+        t_id=results[0]+1
         command = "INSERT INTO Teacher (t_name, t_id, t_department_id, gender) VALUES (%s, %s, %s, %s)"
         cursor.execute(command, (t_name, t_id, t_department_id, gender))
         conn.commit()
         return True
     except:
         return False
+    
 def add_department(d_name, d_id):
     try:
         command = "INSERT INTO Department (d_name, d_id) VALUES (%s, %s)"
