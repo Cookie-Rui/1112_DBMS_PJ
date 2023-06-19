@@ -16,11 +16,12 @@
 
 ## ER Model 
 
-![image](https://github.com/Cookie-Rui/1112_DBMS_PJ/blob/84321ec750f1d0e1c542d151c5e5035b54ba0c2f/ERM%20Diagram.pdf)
+![image](./images/ERModel.png)
 
 ## Relational Schema
 
-![image](https://github.com/Cookie-Rui/1112_DBMS_PJ/blob/84321ec750f1d0e1c542d151c5e5035b54ba0c2f/Relational%20Schema.pdf)
+![image](./images/Relation1.png)
+![image](./images/Relation2.png)
 
 ## Page
 
