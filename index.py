@@ -99,11 +99,14 @@ def CreateTeacher():
 @app.route('/Read/SelectCourse', methods=['GET', 'POST'])
 def PersonalData():
     if(request.method == 'POST'):
-        return render_template('Read/ReadSelectCourse.html', test=yupart.returnSelection("109204039"))
+        return render_template('Read/ReadSelectCourse.html', test=yupart.returnSelection(request.form["Student_id"]))
     return render_template('Read/ReadSelectCourse.html', test=yupart.returnSelectionAll())
 
 @app.route('/Read/Course', methods=['GET', 'POST'])
 def ReadCourses():
+    if(request.method == "POST"):
+        data = read.course_inquire(request.form["Course"])
+        return render_template('Read/view_courses.html', courses=data)
     return render_template('Read/view_courses.html', courses=read.course_all())
 
 @app.route('/Read/Student', methods=['GET', 'POST'])
@@ -112,6 +115,7 @@ def ReadStudents():
 
 @app.route('/Read/Teacher', methods=['GET', 'POST'])
 def ReadTeachers():
+    print(read.teacher_list())
     return render_template('Read/view_teachers.html', teachers=read.teacher_list())
 
 # @app.route('/Read/Department', methods=['GET', 'POST'])

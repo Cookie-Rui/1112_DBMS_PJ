@@ -37,7 +37,7 @@
         <td>{{ teacher[0] }}</td>
         <td>{{ teacher[1] }}</td>
         <td>{{ teacher[2] }}</td>
-        <td>{{ teacher[3] }}</td>
+        <td>{{ "男" if teacher[3][0] == 'M' else "女" }}</td>
     </tr>
     {% endfor %}
 </table>

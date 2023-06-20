@@ -59,6 +59,8 @@ def calcProbability(course_id):
         return (max_people, choose_amount, max_people/choose_amount)
 def deleteStudent(student_id):
     try:
+        command = "DELETE FROM seconddepartment WHERE student_id=%s"
+        cursor.execute(command, student_id)
         command = "DELETE FROM selectcourse WHERE student_id=%s"
         cursor.execute(command, student_id)
         command = "DELETE FROM student WHERE s_id=%s"

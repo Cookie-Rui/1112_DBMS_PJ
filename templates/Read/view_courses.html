@@ -24,6 +24,16 @@
 {% block title %}Courses{% endblock title%}
 {% block content%}
 <h1>View Courses</h1><a href="{{url_for('CreateCourse')}}">新增課程</a>
+<form method="post" action={{ url_for('ReadCourses') }}>
+    <p>
+        <!-- 或是可能要用 Select -->
+        <label for="Course">課程</label>
+        <input type="text" id="Course" name="Course" placeholder="請輸入要查看的課程" value="">
+    </p>
+    <p>
+        <button type='submit'>查詢</button>
+    </p>
+</form>
     <table>
         <tr>
             <th>選課名稱</th>
@@ -50,12 +60,6 @@
             <td>{{ course[7] }}</td>
             <td>{{ course[8] }}</td>
             <td>{{ course[9] }}</td>
-            <!-- <td>
-                <form action="/delete_course" method="POST" style="display: inline;">
-                    <input type="hidden" name="course_id" value="{{ course[0] }}">
-                    <button type="submit">Delete</button>
-                </form>
-            </td> -->
         </tr>
         {% endfor %}
     </table>

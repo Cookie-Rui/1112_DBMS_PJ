@@ -33,19 +33,18 @@ def course_all():
     results2=[]
     for result in results:
         result=course_print(result)
-        results2.append(result)
-    return results2
+    return results
 
 # 根據ID 或 課程名 尋找課程
 # 根據ID.  : 應該是回傳一個課程而已
 # 根據名字 : 回傳相似名字的課程 
 def course_inquire(check_course):
     results=[]
-    if type(check_course)==int:
+    if check_course.isdigit():
         Update.choose_amount_update(check_course)
         command = "SELECT * FROM course WHERE  c_id=%s "
         cursor.execute(command,(check_course))
-        results=cursor.fetchone()
+        results.append(cursor.fetchone())
         return(results)
     if type(check_course)==str:
         check_course='%'+check_course+'%'
@@ -61,18 +60,28 @@ def course_inquire(check_course):
         return(results2)
 
 # 根據獲取的課程 利用Join Teacher 再次回傳新資料
-def course_print(course):
-    command = "SELECT t_name FROM teacher WHERE  t_id=%s "
-    cursor.execute(command,(course[4]))
-    result=cursor.fetchone()
-    command = "SELECT b_name FROM building WHERE  b_id=%s "
-    cursor.execute(command,(course[5]))
-    result2=cursor.fetchone()
-    command = "SELECT d_name FROM department WHERE  d_id=%s "
-    cursor.execute(command,(course[7]))
-    result3=cursor.fetchone()
-    new_course=(course[0],course[1],course[2],course[3],result[0],result2[0],course[6],result3[0],course[8],course[9])
-    return(new_course)
+def course_print(init_courses):
+    new_courses=[]
+    courses=[]
+    if(type(init_courses)==tuple):
+        courses.append(init_courses)
+    else:
+        courses=init_courses
+    for i in range(len(courses)):
+        course=courses[i]
+        command = "SELECT t_name FROM teacher WHERE  t_id=%s "
+        cursor.execute(command,(course[4]))
+        result=cursor.fetchone()
+        command = "SELECT b_name FROM building WHERE  b_id=%s "
+        cursor.execute(command,(course[5]))
+        result2=cursor.fetchone()
+        command = "SELECT d_name FROM department WHERE  d_id=%s "
+        cursor.execute(command,(course[7]))
+        result3=cursor.fetchone()
+        new_course=(course[0],course[1],course[2],course[3],result[0],result2[0],course[6],result3[0],course[8],course[9])
+        new_courses.append(new_course)
+    return(new_courses)
+
 
 def student_list():
     command = "SELECT * FROM student"
@@ -87,3 +96,9 @@ def teacher_list():
     results=cursor.fetchall()
     conn.commit()
     return results
+
+def try_parse_int(string, base=None):
+    try:
+        return int(string, base) if base else int(string)
+    except Exception:
+        return string

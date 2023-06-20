@@ -11,42 +11,54 @@
 <form action="{{ url_for('CreateStudent') }}" method="POST">
     <p>
         <label for="student_name">Name:</label>
-        <input type="text" id="student_name" name="student_name" required>
+        <input type="text" id="student_name" name="student_name" required value="測試中">
     </p>
 
     <p>
         <label for="student_id">Student ID:</label>
-        <input type="text" id="student_id" name="student_id" required>
+        <input type="text" id="student_id" name="student_id" required value="108703095">
     </p>
 
     <p>
         <label for="gender">Gender:</label>
         <select id="gender" name="gender" required>
-            <option value="M">男</option>
+            <option value="M" selected>男</option>
             <option value="F">女</option>
         </select>
     </p>
 
     <p>
         <label for="grade">Grade:</label>
-        <input type="text" id="grade" name="grade" required>
+        <select id="grade" name="grade" required>
+            <option value="大一" selected>大一</option>
+            <option value="大二">大二</option>
+            <option value="大三">大三</option>
+            <option value="大四">大四</option>
+            <option value="其他">其他</option>
+        </select>
     </p>
 
-    <p>
+    <p> 
         <label for="major_Did">Major Department ID:</label>
-        <input type="text" id="major_Did" name="major_Did" required>
+        <input type="text" id="major_Did" name="major_Did" required value="102">
     </p>
 
     <p>
         <label for="haveSecondary">Have Secondary:</label>
         <select id="haveSecondary" name="haveSecondary" required>
-            <option value="0">No</option>
+            <option value="0" selected>No</option>
             <option value="1">Yes</option>
         </select>
+    </p>
+    
+    <p id="MinorBlock"> 
+        <label for="minor_Did">Minor Department ID:</label>
+        <input type="text" id="minor_Did" name="minor_Did" required value="103">
     </p>
 
     <p>
         <button type="submit">新增學生</button>
     </p>
 </form>
+<script src="{{url_for('static', filename='js/Create/add_student.js')}}"></script>
 {% endblock content%}
